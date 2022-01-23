@@ -1,0 +1,23 @@
+{
+  "name": "havetimebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/issei126/havetimebot.git"
+  },
+  "author": "issei126",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/issei126/havetimebot/issues"
+  },
+  "homepage": "https://github.com/issei126/havetimebot#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.9.0",
+    "dotenv": "^14.2.0"
+  }
+}
