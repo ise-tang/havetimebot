@@ -7,7 +7,7 @@ const app = new App({
   socketMode: true,
 });
 
-app.command('/havetime', async({ command, ack, respond }) => {
+app.command('/havto', async({ command, ack, respond }) => {
   await ack();
   
   let spaceSplited = command.text.split(' ');
