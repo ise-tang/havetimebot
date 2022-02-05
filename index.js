@@ -15,8 +15,11 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
   let message = spaceSplited.join(' ');
   
   console.log(`to: ${to}`);
-  
-  if (message.length === 0) {
+
+  if (to.match(/^<.*>/) === null) {
+      await respond('声掛け先の指定をお願いします :pray:')
+  }
+  else if (message.length === 0) {
     await respond(`伝言の入力をお願いします :pray:`);
   }
   else {
