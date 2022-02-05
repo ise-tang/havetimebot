@@ -7,7 +7,7 @@ const app = new App({
   socketMode: true,
 });
 
-app.command('/havto', async({ command, ack, respond }) => {
+app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) => {
   await ack();
   
   let spaceSplited = command.text.split(' ');
