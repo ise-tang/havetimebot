@@ -31,7 +31,46 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
       const result = await app.client.chat.postMessage({
         token: app.token,
         channel: dmId,
-        text: `<@${command.user_id}> さんがcall/huddleしたいようです。伝言を預かっています。「${message}」とのことです。ご対応おねがいします！`
+        text: `<@${command.user_id}> さんがcall/huddleしたいようです。伝言を預かっています。「${message}」とのことです。ご対応おねがいします！`,
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": `<@${command.user_id}> さんがcall/huddleしたいようです。伝言を預かっています。「${message}」とのことです。ご対応おねがいします！`,
+                }
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "OK,ちょっとまってね :+1:",
+                            "emoji": true
+                        },
+                        "value": "ok",
+                        "action_id": "havetime_bot_reply"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "ごめん, あとで :pray:",
+                            "emoji": true
+                        },
+                        "value": "sorry",
+                        "action_id": "havetime_bot_reply"
+                    }
+                ]
+            }
+        ]
       })
     }
     catch (error) {
