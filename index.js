@@ -37,7 +37,7 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": `<@${command.user_id}> さんがcall/huddleしたいようです。伝言を預かっています。「${message}」とのことです。ご対応おねがいします！`,
+                    "text": `<@${command.user_id}> さんがcall/huddleしたいようです。<#${command.channel_id}>から伝言を預かっています。「${message}」とのことです。ご対応おねがいします！`,
                 }
             },
             {
