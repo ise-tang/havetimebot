@@ -79,6 +79,28 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
   }
 });
 
+app.action('havetime_bot_reply', async({ ack, say, body }) => {
+    await ack();
+    await say('返答しておきます！');
+
+    let reply_to = body.message.text.match(/<(.+)>/)[1];
+    if(body.actions[0].value === 'ok') {
+      const result = await app.client.chat.postMessage({
+        token: app.token,
+        channel: reply_to,
+        text: `<@${body.user.id}> さんがから返事がありました。「OK,ちょっとまってね！:+1:」とのことです！`,
+      });
+        console.log('OK')
+    }
+    else if (body.actions[0].value === 'sorry') {
+      const result = await app.client.chat.postMessage({
+        token: app.token,
+        channel: reply_to,
+        text: `<@${body.user.id}> さんがから返事がありました。「ごめん,あとで:pray:」とのことです！`,
+      });
+      console.log('SORRY')
+    }
+});
 
 // Start your app
 (async () => {
