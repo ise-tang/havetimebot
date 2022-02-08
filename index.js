@@ -12,7 +12,9 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
   
   let spaceSplited = command.text.split(' ');
   let to = spaceSplited.shift();
-  let message = spaceSplited.join(' ');
+
+  // 伝言に含まれるプライベートチャンネルIDを置換
+  let message = spaceSplited.join(' ').replace(/&lt;(.*)\|&gt;/, '<$1>');
   
   console.log(`to: ${to}`);
 
