@@ -16,8 +16,6 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
   // 伝言に含まれるプライベートチャンネルIDを置換
   let message = spaceSplited.join(' ').replace(/&lt;(.*)\|&gt;/, '<$1>');
   
-  console.log(`to: ${to}`);
-
   if (to.match(/^<.*>/) === null) {
       await respond('声掛け先の指定をお願いします :pray:')
   }
@@ -92,7 +90,6 @@ app.action('havetime_bot_reply', async({ ack, say, body }) => {
         channel: reply_to,
         text: `<@${body.user.id}> さんがから返事がありました。「OK,ちょっとまってね！:+1:」とのことです！`,
       });
-        console.log('OK')
     }
     else if (body.actions[0].value === 'sorry') {
       const result = await app.client.chat.postMessage({
@@ -100,7 +97,6 @@ app.action('havetime_bot_reply', async({ ack, say, body }) => {
         channel: reply_to,
         text: `<@${body.user.id}> さんがから返事がありました。「ごめん,あとで:pray:」とのことです！`,
       });
-      console.log('SORRY')
     }
 });
 
