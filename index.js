@@ -8,6 +8,8 @@ const app = new App({
 });
 
 app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) => {
+  console.log('-- slash command --');
+
   await ack();
   
   let spaceSplited = command.text.split(' ');
@@ -80,6 +82,7 @@ app.command(`/${process.env.SLASH_COMMAND}`, async({ command, ack, respond }) =>
 });
 
 app.action('havetime_bot_reply', async({ ack, say, body }) => {
+    console.log('-- reply --');
     await ack();
     await say('返答しておきます！');
 
